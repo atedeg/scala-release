@@ -1,0 +1,49 @@
+name: Test and release
+on:
+  push:
+    tags: ['*']
+    branches-ignore:
+      - 'autodelivery**'
+      - 'bump-**'
+      - 'renovate/**'
+    paths-ignore:
+      - 'CHANGELOG.md'
+      - 'LICENSE'
+      - 'README.md'
+      - 'renovate.json'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Test the action
+        uses: ./
+        with:
+          working-dir: "./test/"
+          java-version: "adopt@1.11"
+          pgp-secret: ${{ secrets.PGP_SECRET }}
+          pgp-passphrase: ${{ secrets.PGP_PASSPHRASE }}
+          sonatype-username: ${{ secrets.SONATYPE_USERNAME }}
+          sonatype-password: ${{ secrets.SONATYPE_PASSWORD }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  release:
+    name: Release
+    needs: [test]
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: release Action
+        run: |
+          npm install
+          npx semantic-release

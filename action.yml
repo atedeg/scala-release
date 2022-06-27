@@ -1,0 +1,75 @@
+name: "Scala release"
+description: "A simple Action for configure a Scala environment and release artifacts"
+author: "Nicolas Farabegoli"
+
+inputs:
+  working-dir:
+    description: "The directory in which the action runs the commands"
+    required: false
+    default: "./"
+  semantic-release-enable:
+    description: "If true enable semantic release bot"
+    required: false
+    default: true
+  java-version:
+    description: "The java version to use in the build"
+    required: true
+  pgp-secret:
+    description: "The PGP private key used to sign the artifacts"
+    required: true
+  pgp-passphrase:
+    description: "The passphrase associated to the PGP key used to sign the artifacts"
+    required: true
+  sonatype-username:
+    description: "The username of the sonatype account used to publish to maven central"
+    required: true
+  sonatype-password:
+    description: "The password of the sonatype account used to publish to maven central"
+    required: true
+  github-token:
+    description: "The github token used by conventional commits"
+    required: true
+  pre-release-commands:
+    description: "Commands to execute before the release step"
+    required: false
+    default: "echo -e 'pre-release phase'"
+  post-release-commands:
+    description: "Commands to execute after the release step"
+    required: false
+    default: "echo -e 'post-release phase'"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup scala
+      uses: olafurpg/setup-scala@v13
+      with:
+          java-version: ${{ inputs.java-version }}
+
+    - name: Setup GPG key
+      run: echo ${{ inputs.pgp-secret }} | base64 --decode | gpg --batch --import
+
+    - name: Pre-release command(s)
+      run: ${{ inputs.pre-release-commands }}
+      working-directory: ${{ inputs.working-dir }}
+
+    - name: Publish to Maven Central
+      if: ${{ inputs.semantic-release-enable }} == 'false'
+      run: sbt +publishSigned; sonatypeBundleRelease
+      working-directory: ${{ inputs.working-dir }}
+
+    - name: Setup and execute semantic release
+      if: ${{ inputs.semantic-release-enable }} == 'true'
+      run: |
+        npm install
+        npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONATYPE_USERNAME: ${{ inputs.sonatype-username }}
+        SONATYPE_PASSWORD: ${{ inputs.sonatype-password }}
+        PGP_PASSPHRASE: ${{ inputs.pgp-passphrase }}
+      working-directory: ${{ inputs.working-dir }}
+
+    - name: Post-release command(s)
+      run: ${{ inputs.post-release-commands }}
+      working-directory: ${{ inputs.working-dir }}

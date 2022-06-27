@@ -17,7 +17,7 @@ lazy val root = project
     .in(file("."))
     .settings(
         name := "scala-release-test",
-        version := "1.0.0-beta.1",
+        version := "1.0.0-beta.2",
         crossScalaVersions := Seq("2.12.16", "2.13.8", "3.1.3"),
         publishTo := sonatypePublishToBundle.value,
         sonatypeCredentialHost := "s01.oss.sonatype.org",

@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/atedeg/scala-release/compare/1.0.0-beta.1...1.0.0-beta.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* test the release to maven central ([aa481ad](https://github.com/atedeg/scala-release/commit/aa481ad19bc6855fb37617dad7a2387b14517e69))
+
 # 1.0.0-beta.1 (2022-06-27)
 
 

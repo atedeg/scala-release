@@ -58,13 +58,13 @@ runs:
       working-directory: ${{ inputs.working-dir }}
 
     - name: Publish to Maven Central
-      if: ${{ inputs.semantic-release-enable }} == 'false'
+      if: ${{ inputs.semantic-release-enable == 'false' }}
       shell: bash
       run: sbt +publishSigned; sonatypeBundleRelease
       working-directory: ${{ inputs.working-dir }}
 
     - name: Setup and execute semantic release
-      if: ${{ inputs.semantic-release-enable }} == 'true'
+      if: ${{ inputs.semantic-release-enable == 'true' }}
       shell: bash
       run: |
         npm install

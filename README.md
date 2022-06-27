@@ -1,2 +1,2 @@
 # scala-release
-A simple Action for configure a Scala environment and release artifacts
+A simple Action to configure a Scala environment and release artifacts

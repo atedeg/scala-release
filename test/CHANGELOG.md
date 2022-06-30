@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* add PGP_SECRET environment variable ([351b5d7](https://github.com/atedeg/scala-release/commit/351b5d7d859bf8566c5be0d541a2d11ae0604916))
+
 # 1.0.0-beta.1 (2022-06-30)
 
 

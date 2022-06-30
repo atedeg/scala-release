@@ -10,7 +10,7 @@ inputs:
   semantic-release-enable:
     description: "If true enable semantic release bot"
     required: false
-    default: true
+    default: "true"
   java-version:
     description: "The java version to use in the build"
     required: true
@@ -33,6 +33,10 @@ inputs:
     description: "Commands to execute before the release step"
     required: false
     default: "echo -e 'pre-release phase'"
+  release-commands:
+    description: "Commands to execute for the release step. Is required if 'semantic-release-enable' is set to false."
+    required: false
+    default: "sbt ci-release"
   post-release-commands:
     description: "Commands to execute after the release step"
     required: false
@@ -44,13 +48,7 @@ runs:
     - name: Setup scala
       uses: olafurpg/setup-scala@v13
       with:
-          java-version: ${{ inputs.java-version }}
-
-    - name: Setup GPG key
-      shell: bash
-      run: |
-        export GPG_TTY=$(tty)
-        echo ${{ inputs.pgp-secret }} | base64 --decode | gpg --batch --import
+        java-version: ${{ inputs.java-version }}
 
     - name: Pre-release command(s)
       shell: bash
@@ -60,23 +58,28 @@ runs:
     - name: Publish to Maven Central
       if: ${{ inputs.semantic-release-enable == 'false' }}
       shell: bash
-      run: sbt +publishSigned; sonatypeBundleRelease
+      run: ${{ inputs.release-commands }}
       working-directory: ${{ inputs.working-dir }}
 
     - name: Setup and execute semantic release
+      id: release
       if: ${{ inputs.semantic-release-enable == 'true' }}
       shell: bash
       run: |
+        echo '::set-output name=release-succeeded::false'
         npm install
         npx semantic-release
+        echo '::set-output name=release-succeeded::true'
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         SONATYPE_USERNAME: ${{ inputs.sonatype-username }}
         SONATYPE_PASSWORD: ${{ inputs.sonatype-password }}
         PGP_PASSPHRASE: ${{ inputs.pgp-passphrase }}
+        CI_COMMIT_TAG: "true" #Trigger the release ci-release
       working-directory: ${{ inputs.working-dir }}
 
     - name: Post-release command(s)
+      if: steps.release.outputs.release-succeeded
       shell: bash
       run: ${{ inputs.post-release-commands }}
       working-directory: ${{ inputs.working-dir }}

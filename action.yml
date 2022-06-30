@@ -59,6 +59,13 @@ runs:
       if: ${{ inputs.semantic-release-enable == 'false' }}
       shell: bash
       run: ${{ inputs.release-commands }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONATYPE_USERNAME: ${{ inputs.sonatype-username }}
+        SONATYPE_PASSWORD: ${{ inputs.sonatype-password }}
+        PGP_PASSPHRASE: ${{ inputs.pgp-passphrase }}
+        PGP_SECRET: ${{ inputs.pgp-secret }}
+        CI_COMMIT_TAG: "true" #Trigger the release ci-release
       working-directory: ${{ inputs.working-dir }}
 
     - name: Setup and execute semantic release

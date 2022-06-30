@@ -1,4 +1,4 @@
-tagFormat: '${version}'
+tagFormat: 'v${version}'
 branches:
   - 'main'
   - name: 'beta'
@@ -11,22 +11,8 @@ plugins:
     - preset: conventionalcommits
   - '@semantic-release/release-notes-generator'
   - '@semantic-release/changelog'
-  - - '@google/semantic-release-replace-plugin'
-    - replacements:
-        - files:
-            - build.sbt
-          from: 'version := .*'
-          to: 'version := "${nextRelease.version}",'
-          results:
-            - file: build.sbt
-              hasChanged: true
-              numMatches: 1
-              numReplacements: 1
-          countMatches: true
   - - '@semantic-release/exec'
-    - publishCmd: |
-        sbt +publishSigned || exit 1
-        sbt sonatypeBundleRelease || exit 2
+    - publishCmd: sbt ci-release
   - - '@semantic-release/git'
     - assets:
         - build.sbt

@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-06-30)
+
+
+### Bug Fixes
+
+* add environment variables also in the custom publish step ([d0bf894](https://github.com/atedeg/scala-release/commit/d0bf894117ebef9c84ae468f2752cb0a496d53c2))
+
 # [1.0.0-beta.2](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-06-30)
 
 

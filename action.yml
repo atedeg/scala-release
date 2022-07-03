@@ -1,5 +1,5 @@
 name: "Scala release"
-description: "A simple Action for configure a Scala environment and release artifacts"
+description: "A simple Action to configure a Scala environment and release artifacts"
 author: "Nicolas Farabegoli"
 
 inputs:
@@ -34,7 +34,7 @@ inputs:
     required: false
     default: "echo -e 'pre-release phase'"
   release-commands:
-    description: "Commands to execute for the release step. Is required if 'semantic-release-enable' is set to false."
+    description: "Commands to execute for the release step. Required if 'semantic-release-enable' is set to false."
     required: false
     default: "sbt ci-release"
   post-release-commands:

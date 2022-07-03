@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-07-03)
+
+
+### Bug Fixes
+
+* fix some typos ([c2bfbbb](https://github.com/atedeg/scala-release/commit/c2bfbbb8a1dea75f7ee209feddc24545224a316e))
+
 # [1.0.0-beta.3](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-06-30)
 
 

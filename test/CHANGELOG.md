@@ -1,3 +1,23 @@
+# 1.0.0 (2022-07-04)
+
+
+### Bug Fixes
+
+* add branches in semantic release config file ([50fb009](https://github.com/atedeg/scala-release/commit/50fb009d11955ee2ed38a898d6fc7fc59f879bab))
+* add environment variables also in the custom publish step ([382d746](https://github.com/atedeg/scala-release/commit/382d7468d50e36e2c56987477dc63316163ffd6e))
+* add gpg tty ([cb49d9f](https://github.com/atedeg/scala-release/commit/cb49d9fc8e9482e56ade73615f0e4e3ccaed85fa))
+* add PGP_SECRET environment variable ([43be410](https://github.com/atedeg/scala-release/commit/43be410a28f315e68f864bd7fcce46cf596f0543))
+* add shell ([910b6d6](https://github.com/atedeg/scala-release/commit/910b6d60ea6a18d66bd6122da41af806cce4e4c9))
+* conditions in steps ([218cd0c](https://github.com/atedeg/scala-release/commit/218cd0c724cc181a2f4c2ca73fb2a70f58601b7b))
+* fix some typos ([a651d7d](https://github.com/atedeg/scala-release/commit/a651d7de35db6f1aa1a66fd9298a3de02ff43aa3))
+* test the release to maven central ([0f8a7b7](https://github.com/atedeg/scala-release/commit/0f8a7b756701650744571ceb8944257336928267))
+
+
+### Features
+
+* add custom release commands and improve semantic release stage ([6f04a22](https://github.com/atedeg/scala-release/commit/6f04a22c1ab2911fae900b1327040b6961e7c35c))
+* setup and release scala project with pre/post commands ([d8a17db](https://github.com/atedeg/scala-release/commit/d8a17dbbd04b40123ce2543bb595773ef6713256))
+
 # [1.0.0-beta.4](https://github.com/atedeg/scala-release/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-07-03)
 
 

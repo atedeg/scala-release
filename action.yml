@@ -91,3 +91,6 @@ runs:
       shell: bash
       run: ${{ inputs.post-release-commands }}
       working-directory: ${{ inputs.working-dir }}
+branding:
+  color: red
+  icon: package

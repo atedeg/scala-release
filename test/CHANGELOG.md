@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/atedeg/scala-release/compare/v1.0.0...v1.0.1) (2022-07-06)
+
+
+### Bug Fixes
+
+* remove environment variable from release job ([9fa5bfe](https://github.com/atedeg/scala-release/commit/9fa5bfe4f297142037180bfabb231236648dcaed))
+
 # 1.0.0 (2022-07-04)
 
 

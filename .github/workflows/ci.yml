@@ -25,7 +25,7 @@ jobs:
         uses: ./
         with:
           working-dir: "./test/"
-          java-version: "adopt@1.11"
+          java-version: "17.0.3"
           pgp-secret: ${{ secrets.PGP_SECRET }}
           pgp-passphrase: ${{ secrets.PGP_PASSPHRASE }}
           sonatype-username: ${{ secrets.SONATYPE_USERNAME }}

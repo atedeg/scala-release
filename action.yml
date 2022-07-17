@@ -46,9 +46,11 @@ runs:
   using: "composite"
   steps:
     - name: Setup scala
-      uses: olafurpg/setup-scala@v13
+      uses: actions/setup-java@v3.4.1
       with:
+        distribution: 'temurin'
         java-version: ${{ inputs.java-version }}
+        cache: 'sbt'
 
     - name: Pre-release command(s)
       shell: bash

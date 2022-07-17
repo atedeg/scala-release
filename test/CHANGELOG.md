@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/atedeg/scala-release/compare/v1.0.1...v1.0.2) (2022-07-17)
+
+
+### Bug Fixes
+
+* remove setup-scala in favor of setup-java which support also scala and sbt ([0cb199d](https://github.com/atedeg/scala-release/commit/0cb199d0a73391aa3f49e742a253464f13ce1331))
+
 ## [1.0.1](https://github.com/atedeg/scala-release/compare/v1.0.0...v1.0.1) (2022-07-06)
 
 

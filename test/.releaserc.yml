@@ -12,7 +12,9 @@ plugins:
   - '@semantic-release/release-notes-generator'
   - '@semantic-release/changelog'
   - - '@semantic-release/exec'
-    - publishCmd: sbt ci-release
+    - publishCmd: |
+        export CI_COMMIT_TAG="true"
+        sbt ci-release
   - - '@semantic-release/git'
     - assets:
         - build.sbt

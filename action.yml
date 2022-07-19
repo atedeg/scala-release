@@ -48,9 +48,9 @@ runs:
     - name: Setup scala
       uses: actions/setup-java@v3.4.1
       with:
-        distribution: 'temurin'
+        distribution: 'adopt'
         java-version: ${{ inputs.java-version }}
-        cache: 'sbt'
+        # cache: 'sbt'
 
     - name: Pre-release command(s)
       shell: bash

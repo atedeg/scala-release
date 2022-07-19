@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/atedeg/scala-release/compare/v1.0.2...v1.0.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* use adopt ad java distribution and disable cache ([036310f](https://github.com/atedeg/scala-release/commit/036310fc563df8736a897575a29d3af59ffe416d))
+
 ## [1.0.2](https://github.com/atedeg/scala-release/compare/v1.0.1...v1.0.2) (2022-07-17)
 
 

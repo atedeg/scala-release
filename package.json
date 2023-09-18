@@ -9,7 +9,7 @@
         "husky": "8.0.3"
     },
     "engines": {
-        "node": "18.17"
+        "node": "18.18"
     },
     "husky": {
         "hooks": {
